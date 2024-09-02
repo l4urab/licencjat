@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+    <link rel="icon" type="image/png" href="../static/png/piggy_bank_icon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+</head>
+<body>
+    <header><h1>Notifications</h1></header>
+    {% if notifications %}
+        <p>Total to Claim: {{ total_to_claim }}</p>
+        <form action="{{ url_for('claim_all') }}" method="POST">
+            <button type="submit">Claim All</button>
+        </form>
+    <ul>
+        {% for notification in notifications %}
+            <li>
+                <p>{{ notification.message }} - {{ notification.pocket_money_date.strftime('%Y-%m-%d') }}</p>
+                <form action="{{ url_for('claim_notification', notification_id=notification.id) }}" method="POST">
+                    <button type="submit">Claim</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No notifications</p>
+    {% endif %}
+    <br>
+    <form action="/child_account" method="GET">
+        <button type="submit">Back to Child Account</button>
+    </form>
+</body>
+</html>

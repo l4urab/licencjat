@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connection Success</title>
+</head>
+<body>
+    <h1>Connection Successful</h1>
+    <p>Your account has been successfully connected to the child account.</p>
+    <p>Your account is connected to the following child accounts:</p>
+    <table border="1">
+        {% for child in child_accounts %}
+                <tr>
+                    <td>{{ child[1] }}</td>
+                    <td>{{ child[2] }}</td>
+                </tr>
+        {% endfor %}
+    </table>
+    <p>Do you want to connect to another account?</p>
+    <form action="/connect_account" method="GET">
+        <button type="submit">Yes, connect to another account</button>
+    </form>
+    <form action="/" method="GET">
+        <button type="submit">No, go back to main page</button>
+    </form>
+</body>
+</html>

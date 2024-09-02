@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="../static/png/piggy_bank_icon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+    <title>Edit Pocket Money</title>
+</head>
+<body>
+    <header><h1>Edit Pocket Money</h1></header>
+
+    <table>
+        <tr>
+            <th>Headers</th>
+            <th>Data</th>
+            <th>Actions</th>
+        </tr>
+        <tr>
+            <td>Amount</td>
+            <td>{{ record[2] }}</td>
+            <td class="edit-buttons">
+                <a href="{{ url_for('edit_amount', record_id=record[0]) }}">
+                    <button>Edit Amount</button>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>Frequency</td>
+            <td>{{ record[3] }}</td>
+            <td class="edit-buttons">
+                <a href="{{ url_for('edit_frequency', record_id=record[0]) }}">
+                    <button>Edit Frequency</button>
+                </a>
+            </td>
+        </tr>
+        {% if record[3] == 'weekly' %}
+        <tr>
+            <td>Day of the Week</td>
+            <td>{{ record[5] }}</td>
+            <td class="edit-buttons">
+                <a href="{{ url_for('edit_day_of_week', record_id=record[0]) }}">
+                    <button>Edit Day of the Week</button>
+                </a>
+            </td>
+        </tr>
+        {% elif record[3] == 'monthly' %}
+        <tr>
+            <td>Day of the Month</td>
+            <td>{{ record[4] }}</td>
+            <td class="edit-buttons">
+                <a href="{{ url_for('edit_day_of_month', record_id=record[0]) }}">
+                    <button>Edit Day of the Month</button>
+                </a>
+            </td>
+        </tr>
+        {% endif %}
+    </table>
+    <a href="{{ url_for('pocket_money') }}" class="centered-form">
+        <button>Go Back to Pocket Money</button>
+    </a>
+</body>
+</html>

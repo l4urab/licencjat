@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Spending</title>
+    <link rel="icon" type="image/png" href="../static/png/piggy_bank_icon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+</head>
+<body>
+    <header><h1>Add New Spending</h1></header>
+    <form action="{{ url_for('add_spending', user_id=user_id) }}" method="POST" class="centered-form">
+        <label for="amount">Amount:</label>
+        <label>
+            <input type="number" step="0.01" name="amount">
+        </label>
+        <br>
+        <label for="category">Category:</label>
+        <select id="category" name="category">
+            {% for category in categories %}
+                <option value="{{ category[0] }}">{{ category[1] }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4" cols="50"></textarea>
+        <br>
+        <input type="hidden" name="user_id" value="{{ user_id }}">
+        <button type="submit">Add Spending</button>
+    </form>
+    <br>
+    <form action="{{ url_for('child_account', user_id=user_id) }}" method="GET">
+        <button type="submit">Return to Account Page</button>
+    </form>
+    <h2>Last 5 Spendings</h2>
+    <table border="1">
+        <tr>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Description</th>
+        </tr>
+        {% for spending in last_spendings %}
+            <tr>
+                <td>{{ spending[0] }}</td>
+                <td>{{ spending[1] }}</td>
+                <td>{{ spending[2] }}</td>
+                <td>{{ spending[3] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

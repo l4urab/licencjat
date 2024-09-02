@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Category</title>
+</head>
+<body>
+    <h1>Create a New Category</h1>
+    <form action="/create_category" method="POST">
+        <label for="category_name">Category Name:</label>
+        <input type="text" id="category_name" name="category_name" required>
+        <button type="submit">Create Category</button>
+    </form>
+    <form action="/child_account" method="GET">
+        <button type="submit">Go Back</button>
+    </form>
+</body>
+</html>

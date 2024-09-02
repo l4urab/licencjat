@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Money Allocation</title>
+    <link rel="icon" type="image/png" href="../static/png/piggy_bank_icon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+</head>
+<body>
+<header><h1>Manage Money Allocation</h1></header>
+
+    <form method="POST" action="/manage_pocket_money/{{ record_id }}" class="centered-form">
+        {% for jar in jars %}
+            <div>
+                <label for="jar{{ jar[0] }}">{{ jar[2] }} jar:</label>
+                <input type="number" id="jar{{ jar[0] }}" name="jar{{ jar[0] }}" value="{{ jar[2] }}">
+            </div>
+        {% endfor %}
+
+        <div>
+            <label for="savings_amount">Piggy Bank Amount:</label>
+            <input type="number" id="savings_amount" name="savings_amount" value="{{ savings_amount }}">
+        </div>
+
+        <div>
+            <label for="wallet_amount">Wallet Amount:</label>
+            <input type="number" id="wallet_amount" name="wallet_amount" value="{{ wallet_amount }}">
+        </div>
+
+        <input type="hidden" name="pocket_money_amount" value="{{ pocket_money_amount }}">
+
+        <button type="submit">Submit</button>
+    <h3>Pocket Money Amount: {{ pocket_money_amount }}</h3 >
+    </form>
+
+   <form action="{{ url_for('child_account') }}" method="GET" class="centered-form">
+        <button type="submit">Back to main</button>
+    </form>
+
+<div class="container">
+    <h2 class="mt-5">Pocket Money Allocations</h2>
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for allocation in allocations %}
+            <tr>
+                <td>{{ allocation.id }}</td>
+                <td>{{ allocation.type | capitalize }}</td>
+                <td>{{ allocation.amount }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+
+
+</body>
+</html>

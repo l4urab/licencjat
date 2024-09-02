@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Allocations for Pocket Money</title>
+    <link rel="icon" type="image/png" href="../static/png/piggy_bank_icon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+</head>
+<body>
+    <header>
+        <h1>Allocations for Pocket Money</h1>
+    </header>
+
+    {% if table_data %}
+    <table>
+        <thead class="thead-dark">
+            <tr>
+                <th>Where</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in table_data %}
+            <tr>
+                <td>{{ entry[0] }}</td>
+                <td>{{ entry[1] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <form action="{{ url_for('delete_allocations', record_id=record_id) }}" method="POST" class="centered-form" onsubmit="return confirm('Are you sure you want to delete all allocations for this pocket money?');">
+        <button type="submit" class="btn btn-danger">Delete All Allocations</button>
+    </form>
+    {% else %}
+    <p>No allocations found for this pocket money.</p>
+    {% endif %}
+
+    <br>
+    <a href="{{ url_for('pocket_money') }}" class="btn btn">Go Back</a>
+</body>
+</html>

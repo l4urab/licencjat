@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="icon" type="image/png" href="../static/png/piggy_bank_icon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+</head>
+<body>
+    <header>
+        <a href="/logout" class="nav-link nav-item logout-button">Logout</a>
+        <a href="/settings_child" class="nav-link nav-item logout-button">Settings</a>
+    </header>
+    <div class="container text-center">
+        <h1 class="my-4">Settings</h1>
+
+        <div class="btn-container">
+            <form action="{{ url_for('pocket_money', user_id=user_id) }}" method="GET">
+                <button type="submit" class="btn btn-primary btn-block">Pocket Money Settings</button>
+            </form>
+
+            <form action="{{ url_for('change_password') }}" method="GET">
+                <button type="submit" class="btn btn-primary btn-block">Change Password</button>
+            </form>
+
+            <form action="{{ url_for('change_username') }}" method="GET">
+                <button type="submit" class="btn btn-primary btn-block">Change Username</button>
+            </form>
+
+            <form action="{{ url_for('disconnect_from_parents_account') }}" method="GET">
+                <button type="submit" class="btn btn-primary btn-block">Disconnect from Parent's Account</button>
+            </form>
+
+            <form action="{{ url_for('delete_account') }}" method="GET" onsubmit="return confirm('Are you sure you want to delete your account?')">
+                <button type="submit" class="btn btn-danger btn-block">Delete Account</button>
+            </form>
+
+            <form action="{{ url_for('child_account') }}" method="GET">
+                <button type="submit" class="btn btn-secondary btn-block">Back</button>
+            </form>
+
+            <!-- New Create Category Button -->
+            <form action="{{ url_for('create_category') }}" method="GET">
+                <button type="submit" class="btn btn-success btn-block">Create Category</button>
+            </form>
+
+        </div>
+    </div>
+</body>
+</html>

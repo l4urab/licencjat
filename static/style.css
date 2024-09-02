@@ -1,0 +1,232 @@
+body {
+    color: black; /* Text color */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 70px; /* Ensure space for the bottom navigation */
+}
+
+.container .row {
+    margin-bottom: 20px; /* Space between rows */
+}
+
+.container .col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-link {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #7bb7ff;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: #1e87ff; /* Darker shade on hover */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    background-color: #e9ecef;
+    border-bottom: 1px solid #dee2e6;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+main .username {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+main .balance {
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+.main-icons {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 400px;
+}
+
+.main-icons img {
+    width: 50px;
+    height: 50px;
+}
+
+/* Bottom Navigation */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #e9ecef;
+    border-top: 1px solid #dee2e6;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+footer .nav-item {
+    text-align: center;
+    font-size: 16px;
+    flex: 1;
+}
+
+footer .nav-link {
+    text-decoration: none;
+    color: white;
+}
+
+footer .nav-link:hover {
+    text-decoration: none;
+}
+
+footer .add-button {
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #007bff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 36px;
+    text-decoration: none;
+}
+
+/* Updated Styles for Specific Elements */
+.jar,
+#wallet,
+#piggy-bank {
+    width: 200px;
+    height: 150px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    padding-top: 40px; /* Ensure space for image */
+    font-size: 20px;
+    position: relative;
+    background-size: contain; /* Ensure image fits container */
+    background-repeat: no-repeat; /* Prevent image from repeating */
+    border: none; /* Remove border */
+}
+
+#wallet {
+    background-image: url('../static/png/wallet_closed.png');
+    color: white; /* Text color should contrast with image */
+}
+
+#wallet:hover {
+    background-image: url('../static/png/wallet_open.png');
+}
+
+#piggy-bank {
+    background-image: url('../static/png/piggy_bank.png');
+    color: white; /* Text color should contrast with image */
+}
+
+#piggy-bank:hover {
+    background-image: url('../static/png/piggy_bank_coin.png');
+}
+
+.jar {
+    background-image: url('../static/png/jar_1.png');
+    margin: auto;
+    color: white;
+    position: relative;
+    overflow: hidden; /* Ensures amount text doesn't overflow */
+}
+
+.jar:hover {
+    background-image: url('../static/png/jar_coin.png');
+}
+
+.amount-text {
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+    left: 0;
+    color: darkblue; /* Text color should be visible against the background */
+}
+
+.action-link {
+    text-decoration: none;
+    margin-right: 10px; /* Add horizontal margin */
+    margin-bottom: 10px; /* Add vertical margin */
+}
+
+/* Table styles */
+table {
+    width: 60%; /* Adjusted width to make tables even less wide */
+    margin: 10px auto; /* Center align tables and add margin */
+    border-collapse: collapse;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Adding box shadow for a slight depth effect */
+}
+
+table,
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px; /* Reduced padding for tables */
+}
+
+th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.centered-form {
+    text-align: center; /* Center align the form contents */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    table {
+        font-size: 14px; /* Reduce font size on smaller screens */
+    }
+
+    .main-icons {
+        flex-direction: row; /* Ensure elements are in a row */
+        justify-content: center; /* Center items horizontally */
+    }
+
+    #wallet,
+    #piggy-bank {
+        margin: 0 10px; /* Adjust margin to create space between elements */
+    }
+}
